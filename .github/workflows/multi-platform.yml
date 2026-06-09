@@ -1,0 +1,49 @@
+name: Multi Platform Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show Ubuntu OS Info
+        run: uname -a
+
+      - name: Create and Display Ubuntu File
+        run: |
+          echo "This file was created on Ubuntu" > ubuntu.txt
+          cat ubuntu.txt
+
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show Windows OS Info
+        run: systeminfo
+
+      - name: Create and Display Windows File
+        run: |
+          echo This file was created on Windows > windows.txt
+          type windows.txt
+
+  macos-job:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show MacOS OS Info
+        run: uname -a
+
+      - name: Create and Display MacOS File
+        run: |
+          echo "This file was created on MacOS" > macos.txt
+          cat macos.txt
